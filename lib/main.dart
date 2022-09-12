@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'My Current Home'),
     );
   }
 }
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: FlutterMap(
         options: MapOptions(
-          center: LatLng(51.509364, -0.128928),
+          center: LatLng(-7.975803, 112.616062),
           zoom: 9.2,
         ),
         nonRotatedChildren: [
@@ -63,12 +63,22 @@ class _MyHomePageState extends State<MyHomePage> {
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             userAgentPackageName: 'com.example.app',
           ),
+          MarkerLayer(
+            markers: [
+              Marker(
+                point: LatLng(-7.975803, 112.616062),
+                width: 80,
+                height: 80,
+                builder: (context) => const Icon(Icons.my_location),
+              ),
+            ],
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.my_location),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
